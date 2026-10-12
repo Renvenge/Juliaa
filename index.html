@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#210817" />
+  <title>Happy Birthday — One bow, one heart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="browser-bar">
+      <div class="window-dots"><span></span><span></span><span></span></div>
+      <div class="browser-title"><strong>Happy Birthday</strong> · draw the bow, hit the heart</div>
+      <div class="address">birthday.html</div>
+    </header>
+
+    <section class="scene" aria-label="Árvore feita de corações">
+      <div class="glow"></div>
+      <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+      <svg class="tree" viewBox="0 0 700 820" role="img" aria-label="Árvore romântica com copa em formato de coração">
+        <defs>
+          <linearGradient id="trunk" x1="0" x2="1">
+            <stop offset="0" stop-color="#40202e"/>
+            <stop offset=".5" stop-color="#633345"/>
+            <stop offset="1" stop-color="#2d1523"/>
+          </linearGradient>
+        </defs>
+        <path class="branch" d="M352 820 C337 720 343 640 350 558 C354 500 343 447 318 397" />
+        <path class="branch thin" d="M350 610 C300 570 260 530 227 480 C205 445 180 412 145 390"/>
+        <path class="branch thin" d="M348 565 C390 515 430 475 468 427 C490 399 517 377 552 359"/>
+        <path class="branch thin" d="M333 488 C292 455 271 418 255 374 C245 344 228 324 204 306"/>
+        <path class="branch thin" d="M366 492 C393 445 398 402 399 357 C399 326 413 296 438 271"/>
+        <path class="branch thin" d="M310 406 C278 376 255 346 244 309"/>
+        <path class="branch thin" d="M398 384 C438 355 462 321 475 283"/>
+        <path class="branch thin" d="M275 452 C230 440 196 414 171 383"/>
+        <path class="branch thin" d="M434 459 C473 446 509 420 533 391"/>
+        <g id="heartCanopy"></g>
+      </svg>
+      <div class="birthday-copy">
+        <span class="eyebrow">and… make it count</span>
+        <h1>Happy<br/>Birthday</h1>
+        <p>here’s to a year that blooms</p>
+      </div>
+      <div class="hint" id="hint">Puxe o arco e solte a flecha 💘</div>
+      <div class="bow-area">
+        <svg id="bowSvg" viewBox="0 0 160 130" aria-label="Arco e flecha interativo">
+          <path id="bow" d="M55 20 Q-5 65 55 110" fill="none" stroke="#8b4c35" stroke-width="5" stroke-linecap="round"/>
+          <line id="string" x1="55" y1="20" x2="55" y2="110" stroke="#ead9bc" stroke-width="1.5"/>
+          <g id="arrowGroup" class="arrow">
+            <line x1="25" y1="65" x2="104" y2="65" stroke="#b88b42" stroke-width="2.5"/>
+            <path d="M104 65 L94 59 L96 65 L94 71 Z" fill="#c69b4b"/>
+            <path d="M28 65 L19 59 L22 65 L19 71 Z" fill="#d4a94f"/>
+            <path d="M25 65 L33 57 M25 65 L33 73" stroke="#e7c87e" stroke-width="2"/>
+          </g>
+        </svg>
+        <button id="shootButton" type="button">Atirar a flecha</button>
+      </div>
+    </section>
+
+    <section class="code-panels" aria-label="Trechos do projeto">
+      <article class="code-panel">
+        <div class="panel-heading"><span class="pink-dot"></span><b>index.html</b><span>one bow, one heart</span></div>
+        <pre><code><i>&lt;!-- a real recursive bow +<br/>     a Cupid's arrow --&gt;</i>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"archery"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"bow"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;path</span> <span class="attr">class</span>=<span class="str">"limb"</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;line</span> <span class="attr">class</span>=<span class="str">"string"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+
+  <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="str">"arrow"</span><span class="tag">&gt;</span>
+    <i>&lt;!-- winged gold heart --&gt;</i>
+    <span class="tag">&lt;path</span> <span class="attr">class</span>=<span class="str">"head"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+      </article>
+      <article class="code-panel">
+        <div class="panel-heading"><span class="gold-dot"></span><b>script.js</b><span>draw → fire → bloom</span></div>
+        <pre><code><i>// pull back, then let it fly</i>
+<span class="kw">function</span> <span class="fn">fire</span>() {
+  <span class="fn">string</span>.<span class="fn">to</span>({ y2: rest }, <span class="str">'elastic.out'</span>);
+  <span class="fn">arrow</span>.<span class="fn">to</span>({ y: heart });
+}
+
+<i>// bloom hearts inside a heart</i>
+<span class="kw">while</span> (hearts.length &lt; <span class="num">340</span>) {
+  <span class="kw">const</span> [u, v] = <span class="fn">sample</span>();
+  <span class="kw">if</span> (<span class="fn">inHeart</span>(u, v))
+    <span class="fn">bloom</span>(u, v, <span class="fn">pick</span>(rose));
+}</code></pre>
+      </article>
+    </section>
+    <footer>Feito com carinho · <span id="year"></span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
